@@ -2,7 +2,7 @@ pipeline:
   production-push:
     image: docker
     commands:
-      - docker login $${REGISTRY_ADDR} -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME}
+      - docker login -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME} $${REGISTRY_ADDR}
       - docker build . -t $${REGISTRY_ADDR}/badnews:latest
       - docker push $${REGISTRY_ADDR}/badnews:latest
     volumes:
