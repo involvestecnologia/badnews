@@ -2,8 +2,8 @@ pipeline:
   production-push:
     image: docker
     commands:
-      - docker login $${{REGISTRY_ADDR}} -u $${{DOCKER_PASSWORD}} -u $${{DOCKER_USERNAME}}
-      - docker build . -t $${{REGISTRY_ADDR}}/badnews:latest
+      - docker login $${REGISTRY_ADDR} -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME}
+      - docker build . -t $${REGISTRY_ADDR}/badnews:latest
       - docker push $${{REGISTRY_ADDR}}/badnews:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
