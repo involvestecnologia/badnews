@@ -12,8 +12,8 @@ pipeline:
   #     branch: master
   docker:
     username: $$DOCKER_USERNAME
-      password: $$DOCKER_PASSWORD
-      repo: $$REGISTRY_ADDR/gogs
-      tag: ['latest']
-      registry: $$REGISTRY_ADDR
-      secrets: [ docker_password, registry_addr, docker_username ]
+    password: $$DOCKER_PASSWORD
+    repo: $$REGISTRY_ADDR/badnews
+    tag: ['latest']
+    registry: $$REGISTRY_ADDR
+    secrets: [ docker_password, registry_addr, docker_username ]
