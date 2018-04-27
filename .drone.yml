@@ -3,5 +3,7 @@ pipeline:
     image: node:alpine
     commands:
       - echo $${DOCKER_PASSWORD}
-    secrets: [ docker_password ]
+      - echo $${REGISTRY_ADDR}
+      - echo $${DOCKER_USERNAME}
+    secrets: [ docker_password, registry_addr, docker_username ]
   
