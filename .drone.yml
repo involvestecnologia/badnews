@@ -1,6 +1,6 @@
 pipeline:
   production-push:
-  image: node:alpine
-  commands:
-    - echo ${DOCKER_PASSWORD}
+    image: node:alpine
+    commands:
+      - echo ${DOCKER_PASSWORD}
   
