@@ -1,8 +1,18 @@
 pipeline:
   production-push:
+    image: node:alpine
+    commands:
+      - echo $${DOCKER_PASSWORD}
+      - echo $${REGISTRY_ADDR}
+      - echo $${DOCKER_USERNAME}
+    secrets: [ docker_password, registry_addr, docker_username ]
+
+  production-push:
     image: plugins/docker
     repo: $${{REGISTRY_ADDR}}/badnews
     registry: $${{REGISTRY_ADDR}}
+    username: $${{DOCKER_USERNAME}}
+    password: $${{DOCKER_PASSWORD}}
     tags: [ latest ]
     secrets: [ docker_password, registry_addr, docker_username ]
     when:
