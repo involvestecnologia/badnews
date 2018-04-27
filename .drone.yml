@@ -1,14 +1,19 @@
 pipeline:
-  production-push:
-    image: docker
-    commands:
-      - docker login -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME} $${REGISTRY_ADDR}
-      - docker build . -t $${REGISTRY_ADDR}/badnews:latest
-      - docker push $${REGISTRY_ADDR}/badnews:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    secrets: [ docker_password, registry_addr, docker_username ]
-    when:
-      branch: master
-
-  
+  # production-push:
+  #   image: docker
+  #   commands:
+  #     - docker login -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME} $${REGISTRY_ADDR}
+  #     - docker build . -t $${REGISTRY_ADDR}/badnews:latest
+  #     - docker push $${REGISTRY_ADDR}/badnews:latest
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   secrets: [ docker_password, registry_addr, docker_username ]
+  #   when:
+  #     branch: master
+  docker:
+    username: $$DOCKER_USERNAME
+      password: $$DOCKER_PASSWORD
+      repo: $$REGISTRY_ADDR/gogs
+      tag: ['latest']
+      registry: $$REGISTRY_ADDR
+      secrets: [ docker_password, registry_addr, docker_username ]
