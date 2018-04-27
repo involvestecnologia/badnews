@@ -11,6 +11,7 @@ pipeline:
   #   when:
   #     branch: master
   docker:
+    image: plugins/docker
     username: $$DOCKER_USERNAME
     password: $$DOCKER_PASSWORD
     repo: $$REGISTRY_ADDR/badnews
