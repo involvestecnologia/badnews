@@ -25,7 +25,7 @@ pipeline:
       commands:
           - docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD $REGISTRY_ADDR
           - docker build -t $REGISTRY_ADDR/badnews:latest .
-          - docker push$REGISTRY_ADDR/badnews:latest
+          - docker push $REGISTRY_ADDR/badnews:latest
       volumes:
           - /var/run/docker.sock:/var/run/docker.sock
       when:
