@@ -2,5 +2,6 @@ pipeline:
   production-push:
     image: node:alpine
     commands:
-      - echo ${DOCKER_PASSWORD}
+      - echo ${docker_password}
+    secrets: [ docker_password ]
   
