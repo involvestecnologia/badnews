@@ -1,24 +1,4 @@
 pipeline:
-  # production-push:
-  #   image: docker
-  #   commands:
-  #     - docker login -u $${DOCKER_PASSWORD} -u $${DOCKER_USERNAME} $${REGISTRY_ADDR}
-  #     - docker build . -t $${REGISTRY_ADDR}/badnews:latest
-  #     - docker push $${REGISTRY_ADDR}/badnews:latest
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   secrets: [ docker_password, registry_addr, docker_username ]
-  #   when:
-  #     branch: master
-  # docker:
-  #   image: plugins/docker
-  #   username: $$DOCKER_USERNAME
-  #   password: $$DOCKER_PASSWORD
-  #   repo: $$REGISTRY_ADDR/badnews
-  #   tag: ['latest']
-  #   registry: $$REGISTRY_ADDR
-  #   secrets: [ docker_password, registry_addr, docker_username ]
-
    build:
       image: docker
       secrets: [docker_username,docker_password, registry_addr]
@@ -32,19 +12,19 @@ pipeline:
           branch: master
           status: success
 
-    deploy:
-      image: $${REGISTRY_ADDR}/drone-deploy
-      secrets: [docker_username,docker_password, registry_addr]
-      kubernetes_server: ${KUBERNETES_SERVER}
-      kubernetes_cert: ${KUBERNETES_CERT}
-      kubernetes_token: ${KUBERNETES_TOKEN}
-      auth_config: 
-        username: $${DOCKER_USERNAME}
-        password: $${DOCKER_PASSWORD}
-        registry: $${REGISTRY_ADDR}
-      deployment: production-badnews
-      repo: badnews
-      container: production-badnews
-      tag: 
-        - latest
+   deploy:
+     image: $${REGISTRY_ADDR}/drone-deploy
+     secrets: [docker_username,docker_password, registry_addr]
+     kubernetes_server: ${KUBERNETES_SERVER}
+     kubernetes_cert: ${KUBERNETES_CERT}
+     kubernetes_token: ${KUBERNETES_TOKEN}
+     auth_config: 
+       username: $${DOCKER_USERNAME}
+       password: $${DOCKER_PASSWORD}
+       registry: $${REGISTRY_ADDR}
+     deployment: production-badnews
+     repo: badnews
+     container: production-badnews
+     tag: 
+       - latest
       
