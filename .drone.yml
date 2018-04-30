@@ -31,3 +31,20 @@ pipeline:
       when:
           branch: master
           status: success
+
+    deploy:
+      image: $${REGISTRY_ADDR}/drone-deploy
+      secrets: [docker_username,docker_password, registry_addr]
+      kubernetes_server: ${KUBERNETES_SERVER}
+      kubernetes_cert: ${KUBERNETES_CERT}
+      kubernetes_token: ${KUBERNETES_TOKEN}
+      auth_config: 
+        username: $${DOCKER_USERNAME}
+        password: $${DOCKER_PASSWORD}
+        registry: $${REGISTRY_ADDR}
+      deployment: production-badnews
+      repo: badnews
+      container: production-badnews
+      tag: 
+        - latest
+      
