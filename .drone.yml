@@ -13,7 +13,7 @@ pipeline:
           status: success
 
    deploy:
-     image: ${REGISTRY_ADDR}/drone-deploy
+     image: $REGISTRY_ADDR/drone-deploy
      secrets: [docker_username,docker_password, registry_addr]
      kubernetes_server: ${KUBERNETES_SERVER}
      kubernetes_cert: ${KUBERNETES_CERT}
