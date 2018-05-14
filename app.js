@@ -42,7 +42,7 @@ handler.on('issues', function (event) {
     teamsMap.set('equipe:iOS', "#ios-issues");
     teamsMap.set('equipe:Business Empowerment Team', "#boleteam-issues");
     teamsMap.set('equipe:SCOUTeam', "#scouteam-issues");
-    teamsMap.set('equipe:ExD-Team', '#exd-dúvidas');
+    teamsMap.set('equipe:ExD-Team', '#exd-issues');
     return teamsMap;
   }
 })
