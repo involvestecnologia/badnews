@@ -43,6 +43,7 @@ handler.on('issues', function (event) {
     teamsMap.set('equipe:Business Empowerment Team', "#boleteam-issues");
     teamsMap.set('equipe:SCOUTeam', "#scouteam-issues");
     teamsMap.set('equipe:ExD-Team', '#exd-issues');
+    teamsMap.set('equipe:FronTeam', '#fronteam-issues');
     return teamsMap;
   }
 })
